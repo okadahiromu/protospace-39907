@@ -32,7 +32,7 @@ class PrototypesController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
   def update
     @prototype = Prototype.find(params[:id])
 
@@ -45,6 +45,7 @@ class PrototypesController < ApplicationController
 
   def destroy
     @prototype = Prototype.find(params[:id])
+    @prototype.comments.destroy_all
     @prototype.destroy
 
     redirect_to root_path
